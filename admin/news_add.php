@@ -1,0 +1,40 @@
+<?php
+    session_start();
+    include "config.inc.php";
+    include "function_sum.php";
+    if($_SESSION["valid_admin"]==""){
+        echo"<meta http-equiv='refresh' content='0;url=index.php'>";
+        exit();
+    }
+?>
+<form action="news_add2.php" name="form1" method="post" enctype="multipart/form-data" onsubmit="return check()">
+    <div class="modal-content">
+        <div class="modal-header bg-p">
+            &nbsp;<center><h2><b>เพิ่มข้อมูลข่าวสารใหม่</b></h2></center>
+            <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-12 col-12">
+                    <label>หัวข้อข่าว :</label>
+                    <input type="text" class="form-control" name="head_news" id="head_news" placeholder="หัวข้อข่าว" required>
+                </div>
+                <div class="col-sm-12 col-12">
+                    <label>รายละเอียด :</label>
+                    <textarea class="form-control" name="detail_news" id="detail_news" rows="5" placeholder="รายละเอียด"></textarea>
+                </div>
+                <div class="col-sm-12 col-12">
+                    <label>รูปข่าวสาร :</label>
+                    <input type="file" class="form-control" name="pic_news" id="pic_news">
+                    <font color="red">[รองรับเฉพาะไฟล์ .jpg , .png และ .gif เท่านั้น!]</font>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer bg-1">
+            <center>
+                <button type="submit" class="btn btn-success btn-lg" style="border-radius:30px">&nbsp;&nbsp;บันทึก&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-danger btn-lg" style="border-radius:30px">&nbsp;&nbsp;ยกเลิก&nbsp;&nbsp;</button>
+            </center>
+        </div>
+    </div>
+</form>

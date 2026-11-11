@@ -1,0 +1,32 @@
+<?php
+    $sql="select * from tb_pr where type_ques='4' order by id_pr desc limit 0,3";
+    $result=mysqli_query($conn,$sql);
+?>
+<br/><br/><br/><br/>
+<div class="carousel slide" id="dome" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#dome" data-bs-slide-to="1" class="active"></button>
+        <button type="button" data-bs-target="#dome" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#dome" data-bs-slide-to="3"></button>
+    </div>
+    <div class="carousel-inner">
+        <?php
+            $i=1;
+            while($read=mysqli_fetch_assoc($result)){
+                $pic_pr=$read["pic_pr"];
+        ?>
+        <div class="carousel-item <?php if($i==1){ echo "active"; } ?>">
+            <?php echo "<img src='admin/pr/$pic_pr' class='img-fluid d-block w-100'>"; ?>
+        </div>
+        <?php
+            $i++;
+            }
+        ?>
+    </div>
+    <button type="button" class="carousel-control-prev" data-bs-target="#dome" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button type="button" class="carousel-control-next" data-bs-target="#dome" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
